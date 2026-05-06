@@ -1,14 +1,26 @@
--- ===========================================
--- create app_file
--- ===========================================
+--liquibase formatted sql
+
+--changeset jnolte:20260612_create_app_file
 CREATE TABLE app_file (
   id 				BIGINT NOT NULL PRIMARY KEY,
-  app_user_id 		BIGINT NOT NULL REFERENCES wc01.app_user (id),
+  app_user_id 		BIGINT NOT NULL REFERENCES app_user (id),
   file_name 		VARCHAR(255) NOT NULL,
   file_path 		VARCHAR(255) NOT NULL,
   file_version 		VARCHAR(255) NOT NULL,
   file_size 		BIGINT NOT NULL,
-  file_type_id 		BIGINT NOT NULL REFERENCES wc01.file_type (id),
-  status_type_id 	BIGINT NOT NULL REFERENCES wc01.status_type (id),
+  file_type_id 		BIGINT NOT NULL REFERENCES file_type (id),
+  status_type_id 	BIGINT NOT NULL REFERENCES status_type (id),
   created_dtm 		TIMESTAMP(6) NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
+--rollback DROP TABLE IF EXISTS app_file;
+
+
+-- permissions
+--changeset jnolte:20260612_grant_sec_perms_app_file
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE app_file TO wc_secure_role;
+--rollback REVOKE SELECT, INSERT, UPDATE, DELETE ON TABLE app_user FROM wc_secure_role;
+
+
+--changeset jnolte:20260612_grant_read_perms_on_app_file
+GRANT SELECT ON TABLE app_file TO wc_read_only_role;
+--rollback REVOKE SELECT ON TABLE app_user FROM wc_read_only_role;
