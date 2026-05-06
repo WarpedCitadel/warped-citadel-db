@@ -65,7 +65,7 @@ Create USER :schema_owner WITH
 GRANT :schema_owner_role TO :schema_owner;
 
 /* Create Secure User (wc_app_secure) */
-CREATE USER :app_sec_role WITH
+CREATE USER :app_sec_user WITH
     LOGIN
     ENCRYPTED PASSWORD :'app_sec_pwd';
 
