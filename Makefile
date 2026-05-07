@@ -2,6 +2,9 @@ export JAVA_OPTS=-Dfile.encoding=UTF-8
 
 
 wc_base_dir := database/
+wc_base_deploy := database/schema_create
+
+wc_rel_dirs := $(sort $(dir $(wildcard $(wc_base_dir)/*/)))
 
 
 LOCAL_PG_IP		?=	localhost
@@ -68,3 +71,25 @@ rip_create_local:
 
 	#Warped Citadel Local Database create
 	@make pgdir=$(wc_base_dir)db_create/ pghost=$(localpgip) pgport=$(localpgport) pgfile=create_database.sql pgdbname=wc_dev database_rip
+
+
+# ---- Liquibase Update
+liquibase_update:
+	cd $(pgdir); \
+	yes "" | liquibase --username=$(pguser) --password=$(pgpwd) --url=jdbc:postgresql://$(pgdomain):$(pgport)/$(pgdbname) update
+
+
+# ---- Database Deploy Worker
+database_deploy:
+	@echo; echo DIRECTORY: $(pgdir); echo
+	@make pgdir=$(pgdir) pguser=$(pguser) pgdomain=$(pgdomain) pgport=$(pgport) pgdbname=$(pgdbname) liquibase_update
+
+
+# Database Deploy
+deploy_local:
+	@echo Deploying LOCAL database at $(localpgip):$(localpgport). Are you sure? [Y/n]
+	@read line; if [ ! $$line = "Y" ] && [ ! $$line = "y" ]; then echo Aborting...; exit 1; fi
+	
+	$(eval wcpwd := $(shell grep -iw schema_owner_pwd $(wc_base_dir)schema_sec/wc_dev_parameters.sql | grep -iEo "'([[:alnum:]]*)'" | grep -iEo "([[:alnum:]]*)"))
+	
+	@make pgdir=$(wc_base_deploy) pguser=dbo_wc pgpwd=$(wcpwd) pgdomain=$(localpgip) pgport=$(localpgport) pgdbname=wc_dev database_deploy
