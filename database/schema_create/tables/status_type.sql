@@ -2,12 +2,17 @@
 
 --changeset jnolte:20260612_create_status_type
 CREATE TABLE status_type (
-  id 				SERIAL NOT NULL PRIMARY KEY,
-  status_type_name 	BIGINT NOT NULL
+  id 				SERIAL 		NOT NULL PRIMARY KEY,
+  status_type_name 	VARCHAR(8) 	NOT NULL,
+  CONSTRAINT cap_id CHECK (id <= 4)
 );
 
 COMMENT ON TABLE status_type IS 'static values for a app_file object vetting and approval status';
 --rollback DROP TABLE IF EXISTS status_type;
+
+
+-- create status types
+INSERT INTO status_type (status_type_name) VALUES ('scanning'), ('review'), ('active'), ('deleted');
 
 
 -- permissions

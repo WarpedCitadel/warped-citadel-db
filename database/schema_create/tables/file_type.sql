@@ -2,8 +2,8 @@
 
 --changeset jnolte:20260612_create_file_type
 CREATE TABLE file_type (
-  id 				SERIAL NOT NULL PRIMARY KEY,
-  file_type_name 	BIGINT NOT NULL
+  id 				SERIAL 	NOT NULL PRIMARY KEY,
+  file_type_name 	VARCHAR(4) NOT NULL
 );
 
 COMMENT ON TABLE file_type IS 'static data for accepted file types';

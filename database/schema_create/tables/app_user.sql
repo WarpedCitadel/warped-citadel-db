@@ -3,14 +3,13 @@
 --changeset jnolte:20260612_create_app_user
 CREATE TABLE app_user (
  id 			SERIAL 			NOT NULL PRIMARY KEY,
- --auth_uuid	UUID			NOT NULL,
+ auth_uuid		UUID			NOT NULL DEFAULT uuidv7(),
  username 		VARCHAR(50) 	NOT NULL,
  password_hash 	TEXT 			NOT NULL,
  email			VARCHAR(100) 	NOT NULL UNIQUE,
- --role			VARCHAR(50) NOT NUll,
+ role			SMALLINT 		NOT NUll REFERENCES role (id) DEFAULT 1,
  created_dtm 	TIMESTAMP(6) 	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
-
 
 COMMENT ON TABLE app_user IS 'Base details for users of the platform. More details in app_user_profile table.';
 --rollback DROP TABLE IF EXISTS app_user;
