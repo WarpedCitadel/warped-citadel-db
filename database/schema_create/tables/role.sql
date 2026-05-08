@@ -13,7 +13,7 @@ COMMENT ON TABLE role IS 'list of user roles for the platform';
 
 -- create platform roles
 INSERT INTO role (id, role_type) 
-VALUES 	(1, 'anon'), 
+VALUES 	(1, 'anon'),  -- may remove later as this role doesn not exist once signed in
 		(2, 'user'), 
 		(3, 'mod'), 
 		(4, 'admin');

@@ -3,7 +3,7 @@
 --changeset jnolte:20260612_create_app_user
 CREATE TABLE app_user (
  id 			SERIAL 			NOT NULL PRIMARY KEY,
- auth_uuid		UUID			NOT NULL DEFAULT uuidv7(),
+ uuid			UUID			NOT NULL DEFAULT uuidv7(),
  username 		VARCHAR(50) 	NOT NULL,
  password_hash 	TEXT 			NOT NULL,
  email			VARCHAR(100) 	NOT NULL UNIQUE,
