@@ -22,7 +22,6 @@
 	<!-- Tables -->
 	<include file="/tables/role.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user.sql"        relativeToChangelogFile="true"/>
-	<include file="/tables/file_type.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/status_type.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_file.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user_profile.sql"        relativeToChangelogFile="true"/>

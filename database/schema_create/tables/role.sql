@@ -12,7 +12,11 @@ COMMENT ON TABLE role IS 'list of user roles for the platform';
 
 
 -- create platform roles
-INSERT INTO role (role_type) VALUES ('anon'), ('user'), ('mod'), ('admin');
+INSERT INTO role (id, role_type) 
+VALUES 	(1, 'anon'), 
+		(2, 'user'), 
+		(3, 'mod'), 
+		(4, 'admin');
 
 -- permissions
 --changeset jnolte:20260506_grant_sec_perms_role

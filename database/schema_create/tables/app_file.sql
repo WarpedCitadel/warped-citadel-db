@@ -8,7 +8,7 @@ CREATE TABLE app_file (
   file_path 		VARCHAR(255) NOT NULL,
   file_version 		VARCHAR(255) NOT NULL,
   file_size 		BIGINT NOT NULL,
-  file_type_id 		BIGINT NOT NULL REFERENCES file_type (id),
+  file_type 		VARCHAR(4) NOT NULL,
   status_type_id 	BIGINT NOT NULL REFERENCES status_type (id),
   created_dtm 		TIMESTAMP(6) NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
