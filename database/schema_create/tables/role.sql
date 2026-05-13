@@ -4,7 +4,7 @@
 CREATE TABLE role (
  id 		SERIAL 	PRIMARY KEY,
  role_type 	VARCHAR(5) 	NOT NULL
- CONSTRAINT cap_id CHECK (id <= 4)
+ CONSTRAINT cap_id CHECK (id <= 3)
 );
 
 COMMENT ON TABLE role IS 'list of user roles for the platform';
@@ -13,14 +13,13 @@ COMMENT ON TABLE role IS 'list of user roles for the platform';
 
 -- create platform roles
 INSERT INTO role (id, role_type) 
-VALUES 	(1, 'anon'),  -- may remove later as this role doesn not exist once signed in
-		(2, 'user'), 
-		(3, 'mod'), 
-		(4, 'admin');
+VALUES	(1, 'user'), 
+		(2, 'mod'), 
+		(3, 'admin');
 
 -- permissions
 --changeset jnolte:20260506_grant_sec_perms_role
-GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE role TO wc_secure_role;
+GRANT SELECT ON TABLE role TO wc_secure_role;
 --rollback REVOKE SELECT, INSERT, UPDATE, DELETE ON TABLE role FROM wc_secure_role;
 
 

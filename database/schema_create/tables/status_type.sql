@@ -12,7 +12,11 @@ COMMENT ON TABLE status_type IS 'static values for a app_file object vetting and
 
 
 -- create status types
-INSERT INTO status_type (status_type_name) VALUES ('scanning'), ('review'), ('active'), ('deleted');
+INSERT INTO status_type (id, status_type_name) 
+VALUES 	(1, 'scanning'), 
+		(2, 'review'), 
+		(3, 'active'), 
+		(4, 'deleted');
 
 
 -- permissions

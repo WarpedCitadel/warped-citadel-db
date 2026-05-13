@@ -7,7 +7,7 @@ CREATE TABLE app_user (
  username 		VARCHAR(50) 	NOT NULL,
  password_hash 	TEXT 			NOT NULL,
  email			VARCHAR(100) 	NOT NULL UNIQUE,
- role			SMALLINT 		NOT NUll REFERENCES role (id) DEFAULT 2,
+ role			SMALLINT 		NOT NUll REFERENCES role (id) DEFAULT 1,
  created_dtm 	TIMESTAMP(6) 	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
 
