@@ -18,6 +18,9 @@ COMMENT ON TABLE app_user IS 'Base details for users of the platform. More detai
 --changeset jnolte:20260507_create_app_user_uk01 runInTransaction:false
 CREATE UNIQUE INDEX CONCURRENTLY app_user_uk01 ON app_user(lower(username));
 
+--changeset jnolte:20260516_create_app_user_uk02 runInTransaction:false
+CREATE UNIQUE INDEX CONCURRENTLY app_user_uk02 ON app_user(uuid);
+
 
 -- permissions
 --changeset jnolte:20260506_grant_sec_perms_app_user

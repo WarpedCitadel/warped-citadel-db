@@ -2,13 +2,20 @@
 
 --changeset jnolte:20260612_create_app_user_profile
 CREATE TABLE app_user_profile (
-  id 				SERIAL 	NOT NULL PRIMARY KEY,
-  app_user_id 		BIGINT 	NOT NULL REFERENCES app_user (id),
-  app_user_file_id	BIGINT	NOT NULL REFERENCES app_file (id)
+  id 				SERIAL 			NOT NULL PRIMARY KEY,
+  app_user_id 		BIGINT 			NOT NULL REFERENCES app_user (id),
+  profile_image		UUID,
+  display_name		Varchar(20),
+  user_bio			TEXT 			CONSTRAINT user_bio_length CHECK (char_length(user_bio) <= 250),
+  modified_dtm		TIMESTAMP(6)	DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
 
 COMMENT ON TABLE app_user_profile IS 'Detailed information for a users profile on the platform.';
 --rollback DROP TABLE IF EXISTS app_user_profile;
+
+
+--changeset jnolte:20260516_create_app_user_profile_uk01 runInTransaction:false
+CREATE UNIQUE INDEX CONCURRENTLY app_user_profile_uk01 ON app_user_profile(app_user_id);
 
 
 -- permissions
