@@ -1,5 +1,6 @@
 --liquibase formatted sql
 
+
 --changeset jnolte:2020513_create_users
 INSERT INTO app_user (uuid, username, password_hash, email, role)
 VALUES	('019e2277-92f6-7894-8f01-d5c838efd88f', 'Crom', '$2a$10$G8EtHS5Oa/5rPwFDTRYQwOjFCqMxeGmSv.jx7THssGpi3Qn0Op6QW', 'crom@yahoo.com', 1), -- passwords are "Passw0rd!"

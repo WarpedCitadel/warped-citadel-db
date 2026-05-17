@@ -27,6 +27,6 @@
 	<include file="/tables/app_user_profile.sql"        relativeToChangelogFile="true"/>
 	<!-- Reference Data -->
 	<include file="/reference/users.sql"        relativeToChangelogFile="true"/>
-		
+	<include file="/reference/users_profile.sql"        relativeToChangelogFile="true"/>
 	
 </databaseChangeLog>
