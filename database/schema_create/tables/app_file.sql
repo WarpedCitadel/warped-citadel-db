@@ -1,21 +1,25 @@
 --liquibase formatted sql
 
---changeset jnolte:20260612_create_app_file
+--changeset jnolte:20260520_create_app_file
 CREATE TABLE app_file (
   id 				SERIAL 			NOT NULL PRIMARY KEY,
   uuid				UUID			NOT NULL DEFAULT uuidv7(),
   app_user_id		BigInt			NOT NULL REFERENCES app_user (id),
   file_name 		VARCHAR(100)	NOT NULL,
-  file_version 		VARCHAR(20)		NOT NULL,
-  file_size 		TEXT			NOT NULL,
-  file_type 		VARCHAR(5) 		NOT NULL,
-  status_type_id 	SMALLINT 		NOT NULL REFERENCES status_type (id),
+  file_version 		VARCHAR(20)		NOT NULL UNIQUE,
+  file_size 		VARCHAR(7)		NOT NULL,
+  status_type_id 	SMALLINT 		NOT NULL REFERENCES status_type (id) DEFAULT 1,
+  description		TEXT			CONSTRAINT game_desc_length CHECK (char_length(description) <= 300),
   created_dtm 		TIMESTAMP(6) 	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC'),
   modified_dtm		TIMESTAMP(6)	DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
 
-COMMENT ON TABLE app_file IS 'Object metadata for all file uploads for the platform.';
+COMMENT ON TABLE app_file IS 'Object metadata for game file uploads for the platform.';
 --rollback DROP TABLE IF EXISTS app_file;
+
+
+--changeset jnolte:20260520_create_app_file_uk01 runInTransaction:false
+CREATE UNIQUE INDEX CONCURRENTLY app_file_uk01 ON app_file(uuid);
 
 
 -- permissions
