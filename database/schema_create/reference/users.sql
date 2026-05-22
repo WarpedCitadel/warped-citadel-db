@@ -1,7 +1,7 @@
 --liquibase formatted sql
 
 
---changeset jnolte:2020513_create_users
+--changeset jnolte:2020521_create_users
 INSERT INTO app_user (uuid, username, password_hash, email, role)
 VALUES	('019e372d-5097-76fc-98c9-0db5174d7d62', 'WCADMIN', '$2a$10$G8EtHS5Oa/5rPwFDTRYQwOjFCqMxeGmSv.jx7THssGpi3Qn0Op6QW', 'warpedCitadeladmin@gmail.com', 3), -- passwords are "Passw0rd!"
 		('019e372d-5613-727a-baa2-3c23fabf5f64', 'WCMOD', '$2a$10$G8EtHS5Oa/5rPwFDTRYQwOjFCqMxeGmSv.jx7THssGpi3Qn0Op6QW', 'warpedCitadelmod@gmail.com', 2),
