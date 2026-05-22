@@ -26,8 +26,14 @@
 	<include file="/tables/app_file.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_file_image.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user_profile.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/genre.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/game_profile.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/game_image.sql"        relativeToChangelogFile="true"/>
 	<!-- Reference Data -->
 	<include file="/reference/users.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/users_profile.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/app_files.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_profiles.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_images.sql"        relativeToChangelogFile="true"/>
 	
 </databaseChangeLog>
