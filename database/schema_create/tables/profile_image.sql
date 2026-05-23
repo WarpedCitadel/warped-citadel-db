@@ -7,7 +7,7 @@ CREATE TABLE profile_image (
   uuid				UUID			NOT NULL DEFAULT uuidv7(),
   file_name 		VARCHAR(100)	NOT NULL,
   file_size 		VARCHAR(7)		NOT NULL,
-  created_dtm 		TIMESTAMP(6) 	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
+  modified_dtm 		TIMESTAMP(6) 	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
 
 
