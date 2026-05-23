@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset jnolte:20260512_create_app_user
+--changeset jnolte:20260523_create_app_user
 CREATE TABLE app_user (
  id 			SERIAL 			NOT NULL PRIMARY KEY,
  uuid			UUID			NOT NULL DEFAULT uuidv7(),

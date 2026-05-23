@@ -1,11 +1,11 @@
--- liquibase formatted sql
+--liquibase formatted sql
 
---changeset jnolte:20260521_create_game_profile
+--changeset jnolte:20260523_create_game_profile
 CREATE TABLE game_profile (
 	id				SERIAL			NOT NULL PRIMARY KEY,
 	app_file_id		BIGINT			NOT NULL REFERENCES app_file (id),
 	title			VARCHAR(100)	NOT NULL,
-	description		TEXT			CONSTRAINT game_desc_length CHECK (char_length(description) <= 800),
+	description		TEXT			CONSTRAINT game_desc_length CHECK (char_length(description) <= 5000),
 	genre_id		SMALLINT		NOT NULL REFERENCES genre (id),
 	created_dtm		TIMESTAMP(6)	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC'),
 	modified_dtm	TIMESTAMP(6)	DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')

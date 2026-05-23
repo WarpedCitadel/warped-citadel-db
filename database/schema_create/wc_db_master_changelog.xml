@@ -30,11 +30,11 @@
 	<include file="/tables/game_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_image.sql"        relativeToChangelogFile="true"/>
 	<!-- Reference Data -->
-	<include file="/reference/users.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/users_profile.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/profile_images.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/app_files.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_profiles.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_images.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/app_users_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/user_profiles_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/profile_images_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/app_files_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_profiles_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_images_mock.sql"        relativeToChangelogFile="true"/>
 	
 </databaseChangeLog>

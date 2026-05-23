@@ -1,11 +1,11 @@
 --liquibase formatted sql
 
---changeset jnolte:20260622_create_app_user_profile
+--changeset jnolte:20260623_create_app_user_profile
 CREATE TABLE app_user_profile (
   id 				SERIAL 			NOT NULL PRIMARY KEY,
   app_user_id 		BIGINT 			NOT NULL REFERENCES app_user (id),
-  display_name		Varchar(20),
-  user_bio			TEXT 			CONSTRAINT user_bio_length CHECK (char_length(user_bio) <= 500),
+  display_name		Varchar(50),
+  user_bio			TEXT 			CONSTRAINT user_bio_length CHECK (char_length(user_bio) <= 5000),
   modified_dtm		TIMESTAMP(6)	DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
 
