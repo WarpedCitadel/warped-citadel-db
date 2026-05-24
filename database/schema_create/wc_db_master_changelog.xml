@@ -36,5 +36,6 @@
 	<include file="/reference/app_files_mock.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_profiles_mock.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_images_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_image_cover_mock.sql"        relativeToChangelogFile="true"/>
 	
 </databaseChangeLog>

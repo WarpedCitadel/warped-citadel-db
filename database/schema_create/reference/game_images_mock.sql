@@ -1,7 +1,7 @@
 --liquibase formatted sql
 
 
---changeset jnolte:20260523_create_game_images
+--changeset jnolte:20260524_create_game_images
 insert into game_image (game_profile_id, file_name, file_size) values (202, 'Domainer.jpg', '43MB');
 insert into game_image (game_profile_id, file_name, file_size) values (30, 'Opela.gif', '43MB');
 insert into game_image (game_profile_id, file_name, file_size) values (168, 'It.gif', '65KB');
