@@ -4,7 +4,7 @@
 CREATE TABLE game_image (
 	id					SERIAL			NOT NULL PRIMARY KEY,
 	game_profile_id		BIGINT			NOT NULL REFERENCES game_profile (id),
-	uuid				UUID			NOT NULL DEFAULT uuidv7(),
+	img_uuid			UUID			NOT NULL DEFAULT uuidv7(),
 	iscover				BOOLEAN			NOT NULL DEFAULT FALSE,
 	file_name			varchar(100)	NOT NULL,
 	file_size			varchar(7)		NOT NULL,

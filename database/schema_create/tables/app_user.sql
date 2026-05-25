@@ -3,7 +3,7 @@
 --changeset jnolte:20260523_create_app_user
 CREATE TABLE app_user (
  id 			SERIAL 			NOT NULL PRIMARY KEY,
- uuid			UUID			NOT NULL DEFAULT uuidv7(),
+ user_uuid		UUID			NOT NULL DEFAULT uuidv7(),
  username 		VARCHAR(50) 	NOT NULL,
  password_hash 	TEXT 			NOT NULL,
  email			VARCHAR(100) 	NOT NULL UNIQUE,
@@ -19,7 +19,7 @@ COMMENT ON TABLE app_user IS 'Base details for users of the platform. More detai
 CREATE UNIQUE INDEX CONCURRENTLY app_user_uk01 ON app_user(lower(username));
 
 --changeset jnolte:20260516_create_app_user_uk02 runInTransaction:false
-CREATE UNIQUE INDEX CONCURRENTLY app_user_uk02 ON app_user(uuid);
+CREATE UNIQUE INDEX CONCURRENTLY app_user_uk02 ON app_user(user_uuid);
 
 
 -- permissions

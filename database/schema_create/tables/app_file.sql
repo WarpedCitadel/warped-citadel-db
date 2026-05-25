@@ -3,7 +3,7 @@
 --changeset jnolte:20260521_create_app_file
 CREATE TABLE app_file (
   id 				SERIAL 			NOT NULL PRIMARY KEY,
-  uuid				UUID			NOT NULL DEFAULT uuidv7(),
+  file_uuid			UUID			NOT NULL DEFAULT uuidv7(),
   app_user_id		BigInt			NOT NULL REFERENCES app_user (id),
   file_name 		VARCHAR(100)	NOT NULL,
   file_version 		VARCHAR(20)		NOT NULL,
@@ -18,7 +18,7 @@ COMMENT ON TABLE app_file IS 'Object metadata for game file uploads for the plat
 
 
 --changeset jnolte:20260520_create_app_file_uk01 runInTransaction:false
-CREATE UNIQUE INDEX CONCURRENTLY app_file_uk01 ON app_file(uuid);
+CREATE UNIQUE INDEX CONCURRENTLY app_file_uk01 ON app_file(file_uuid);
 
 
 -- permissions
