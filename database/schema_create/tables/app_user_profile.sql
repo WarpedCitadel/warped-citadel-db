@@ -6,7 +6,7 @@ CREATE TABLE app_user_profile (
   app_user_id 		BIGINT 			NOT NULL REFERENCES app_user (id),
   display_name		Varchar(50),
   user_bio			TEXT 			CONSTRAINT user_bio_length CHECK (char_length(user_bio) <= 5000),
-  modified_dtm		TIMESTAMP(6)	DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
+  modified_dtm		TIMESTAMP(6)	NOT NUll DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
 
 
@@ -20,6 +20,14 @@ CREATE UNIQUE INDEX CONCURRENTLY app_user_profile_uk02 ON app_user_profile(id);
 
 --changeset jnolte:20260516_create_app_user_profile_uk01 runInTransaction:false
 CREATE UNIQUE INDEX CONCURRENTLY app_user_profile_uk01 ON app_user_profile(app_user_id);
+
+
+--triggers
+--changeset jnolte:20260526_create_trg_app_user_profile_audit
+CREATE TRIGGER app_user_profile_audit
+BEFORE INSERT OR UPDATE ON app_user_profile
+	FOR EACH ROW EXECUTE FUNCTION fnc_table_row_audit_trg();
+--rollback DROP TRIGGER IF EXISTS app_user_profile_audit ON app_user_profile;
 
 
 -- permissions
