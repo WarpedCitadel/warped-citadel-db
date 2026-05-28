@@ -5,8 +5,16 @@
 CREATE OR REPLACE FUNCTION fnc_table_row_audit_trg() RETURNS TRIGGER AS 
 $func$
 BEGIN
-	IF (TG_OP = 'UPDATE') THEN
-			New.modified_dtm := CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC';
+	IF (LOWER(TG_TABLE_NAME) != 'app_user_audit') THEN
+	
+		IF (TG_OP = 'UPDATE' OR TG_OP = 'INSERT') THEN
+				NEW.modified_dtm := CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC';
+		END IF;
+	ELSE
+
+		IF (TG_OP = 'INSERT') THEN
+				NEW.lastactive_dtm := CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC';
+		END IF;
 	END IF;
 
 	RETURN NEW;

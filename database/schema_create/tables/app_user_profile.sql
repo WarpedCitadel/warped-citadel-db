@@ -23,11 +23,11 @@ CREATE UNIQUE INDEX CONCURRENTLY app_user_profile_uk01 ON app_user_profile(app_u
 
 
 --triggers
---changeset jnolte:20260526_create_trg_app_user_profile_audit
-CREATE TRIGGER app_user_profile_audit
+--changeset jnolte:20260526_create_trg_app_user_profile_session
+CREATE TRIGGER app_user_profile_session
 BEFORE INSERT OR UPDATE ON app_user_profile
 	FOR EACH ROW EXECUTE FUNCTION fnc_table_row_audit_trg();
---rollback DROP TRIGGER IF EXISTS app_user_profile_audit ON app_user_profile;
+--rollback DROP TRIGGER IF EXISTS app_user_profile_session ON app_user_profile;
 
 
 -- permissions
