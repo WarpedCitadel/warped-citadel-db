@@ -2,22 +2,22 @@
 
 
 --changeset jnolte:2020523_create_app_users
-insert into app_user (username, password_hash, email, role) values ('hpetrik0', '$2a$04$dLb5GaPF1D5hJ.KTFE24aO9gIpCeRllciiA482Axt4xqIjqR2lSey', 'abraunlein0@oakley.com', 1);
-insert into app_user (username, password_hash, email, role) values ('kmbarron1', '$2a$04$WN9VNwgQu1s151/IUYzwXOChbfBP2UrdvNSa.MUaDi1RkOHr0AIHq', 'sgask1@mlb.com', 1);
-insert into app_user (username, password_hash, email, role) values ('pswenson2', '$2a$04$q9MTVMAR.wjJ9aSuE5XH1u6l6UvFEPSPfjhUOYOa.293FfU8P3NNq', 'lvasyatkin2@ed.gov', 1);
-insert into app_user (username, password_hash, email, role) values ('ggierok3', '$2a$04$pGI8ok//ZN3v4gtmIOq4nePIPg5hS6NhF1//JfHWyITRUqXmiUC6a', 'fblyden3@e-recht24.de', 1);
-insert into app_user (username, password_hash, email, role) values ('tsendley4', '$2a$04$OI/Xe/N9XJhhOuQmaTwaqeH0x4rEC8iItqC13Gw0RaC7rJuJRzNF2', 'aamesbury4@time.com', 1);
-insert into app_user (username, password_hash, email, role) values ('dmackenney5', '$2a$04$wvkp0CAy4VYZT43Ry1bOZez0x53l1yFhnR0rUyuUSs6rwQ4xbwTQ.', 'mstreeton5@odnoklassniki.ru', 1);
-insert into app_user (username, password_hash, email, role) values ('aherreros6', '$2a$04$IFI6cMdnDkO1M8sjckVk/OIwIaZnaReFHgA7WGCobyWomjOUqP3sW', 'egeach6@elegantthemes.com', 1);
-insert into app_user (username, password_hash, email, role) values ('uiskower7', '$2a$04$yMfweFbGsNhyPm8UPhwH4.Z8GOf1Stn8O7vgc8vDOqIw7KWO4WQIu', 'trootes7@amazon.com', 1);
-insert into app_user (username, password_hash, email, role) values ('lkrugmann8', '$2a$04$ZSbV.01XVrYWQchcIhDEMeNuCgFEFxbwC3P25nR5Wh7PDjOw7gpiy', 'jtalks8@paginegialle.it', 1);
-insert into app_user (username, password_hash, email, role) values ('tpowdrell9', '$2a$04$LHPy4GRaeERUu34/SeYDKeA15tz9ufb8cwHwZaTwv7x1oxVTiJN06', 'jbalentyne9@ucla.edu', 1);
-insert into app_user (username, password_hash, email, role) values ('hblabbera', '$2a$04$SGDIbZjO3L35aK80VBC.z.Rj5cAyJ8GCVhLdYEcmMJXETnjZQzqum', 'oromia@amazon.de', 1);
-insert into app_user (username, password_hash, email, role) values ('kovenellb', '$2a$04$.N4hoCTKx2h9xRE2rAkscuejkXtvVIjvNAtAZgfUoU1HqqzCQm2V6', 'glantb@google.co.jp', 1);
-insert into app_user (username, password_hash, email, role) values ('bkleeweinc', '$2a$04$5i7Ox/iUOvGWNAlUOWrEZOSxVdpr0.tHOIUV.Bq5Xeqyi0quxo6vS', 'dcaudwellc@washingtonpost.com', 1);
-insert into app_user (username, password_hash, email, role) values ('eloughneyd', '$2a$04$Y2k6yw71nXed/j9rbu8tWOtAqg6C0MtWiLNmYkzgFIN2LnWGPgTzK', 'dboyfordd@angelfire.com', 1);
-insert into app_user (username, password_hash, email, role) values ('gklimshuke', '$2a$04$zRX9r/87iMIxjvijw2sv1umnOi4ZWYSx1W8lMFZrgKHJicDjkveKK', 'ksnelle@seesaa.net', 1);
-insert into app_user (username, password_hash, email, role) values ('cradbornef', '$2a$04$xL04UfW5QHpBqop2A.aubu.H4EBLhoC6aHPpAKWWz2ulgzJN01Ar2', 'jvanyukovf@163.com', 1);
+insert into app_user (username, password_hash, email, role) values ('hpetrik0', '$2a$04$dLb5GaPF1D5hJ.KTFE24aO9gIpCeRllciiA482Axt4xqIjqR2lSey', 'abraunlein0@oakley.com', 3);
+insert into app_user (username, password_hash, email, role) values ('kmbarron1', '$2a$04$WN9VNwgQu1s151/IUYzwXOChbfBP2UrdvNSa.MUaDi1RkOHr0AIHq', 'sgask1@mlb.com', 3);
+insert into app_user (username, password_hash, email, role) values ('pswenson2', '$2a$04$q9MTVMAR.wjJ9aSuE5XH1u6l6UvFEPSPfjhUOYOa.293FfU8P3NNq', 'lvasyatkin2@ed.gov', 3);
+insert into app_user (username, password_hash, email, role) values ('ggierok3', '$2a$04$pGI8ok//ZN3v4gtmIOq4nePIPg5hS6NhF1//JfHWyITRUqXmiUC6a', 'fblyden3@e-recht24.de', 3);
+insert into app_user (username, password_hash, email, role) values ('tsendley4', '$2a$04$OI/Xe/N9XJhhOuQmaTwaqeH0x4rEC8iItqC13Gw0RaC7rJuJRzNF2', 'aamesbury4@time.com', 3);
+insert into app_user (username, password_hash, email, role) values ('dmackenney5', '$2a$04$wvkp0CAy4VYZT43Ry1bOZez0x53l1yFhnR0rUyuUSs6rwQ4xbwTQ.', 'mstreeton5@odnoklassniki.ru', 3);
+insert into app_user (username, password_hash, email, role) values ('aherreros6', '$2a$04$IFI6cMdnDkO1M8sjckVk/OIwIaZnaReFHgA7WGCobyWomjOUqP3sW', 'egeach6@elegantthemes.com', 2);
+insert into app_user (username, password_hash, email, role) values ('uiskower7', '$2a$04$yMfweFbGsNhyPm8UPhwH4.Z8GOf1Stn8O7vgc8vDOqIw7KWO4WQIu', 'trootes7@amazon.com', 2);
+insert into app_user (username, password_hash, email, role) values ('lkrugmann8', '$2a$04$ZSbV.01XVrYWQchcIhDEMeNuCgFEFxbwC3P25nR5Wh7PDjOw7gpiy', 'jtalks8@paginegialle.it', 2);
+insert into app_user (username, password_hash, email, role) values ('tpowdrell9', '$2a$04$LHPy4GRaeERUu34/SeYDKeA15tz9ufb8cwHwZaTwv7x1oxVTiJN06', 'jbalentyne9@ucla.edu', 2);
+insert into app_user (username, password_hash, email, role) values ('hblabbera', '$2a$04$SGDIbZjO3L35aK80VBC.z.Rj5cAyJ8GCVhLdYEcmMJXETnjZQzqum', 'oromia@amazon.de', 2);
+insert into app_user (username, password_hash, email, role) values ('kovenellb', '$2a$04$.N4hoCTKx2h9xRE2rAkscuejkXtvVIjvNAtAZgfUoU1HqqzCQm2V6', 'glantb@google.co.jp', 2);
+insert into app_user (username, password_hash, email, role) values ('bkleeweinc', '$2a$04$5i7Ox/iUOvGWNAlUOWrEZOSxVdpr0.tHOIUV.Bq5Xeqyi0quxo6vS', 'dcaudwellc@washingtonpost.com', 2);
+insert into app_user (username, password_hash, email, role) values ('eloughneyd', '$2a$04$Y2k6yw71nXed/j9rbu8tWOtAqg6C0MtWiLNmYkzgFIN2LnWGPgTzK', 'dboyfordd@angelfire.com', 2);
+insert into app_user (username, password_hash, email, role) values ('gklimshuke', '$2a$04$zRX9r/87iMIxjvijw2sv1umnOi4ZWYSx1W8lMFZrgKHJicDjkveKK', 'ksnelle@seesaa.net', 2);
+insert into app_user (username, password_hash, email, role) values ('cradbornef', '$2a$04$xL04UfW5QHpBqop2A.aubu.H4EBLhoC6aHPpAKWWz2ulgzJN01Ar2', 'jvanyukovf@163.com', 2);
 insert into app_user (username, password_hash, email, role) values ('bbrakewellg', '$2a$04$HylUMIeWM6V2uWFeV3P2Hu5HqGLg/DSO2yLmTJGtNUoqJt2t3NpBC', 'bleedg@mac.com', 1);
 insert into app_user (username, password_hash, email, role) values ('dwhathamh', '$2a$04$wsD4L6zfJLNMvf1RJfIOeOU4hrAb44UsJj2nhUnrsQRCvSVtUSgl2', 'htignerh@slashdot.org', 1);
 insert into app_user (username, password_hash, email, role) values ('omaylingi', '$2a$04$jsFvtTpJJq9p5ZxLnAuDD.y5q2gITLzagB9/TYmWgkfEtCGTkHgim', 'ebuteni@about.com', 1);
