@@ -27,15 +27,15 @@
 
 -- Schema Owner User
 \set schema_owner              'dbo_wc'
-\set schema_owner_pwd          'changme'
+\set schema_owner_pwd          'changeme'
 
 
 -- Secure Users
 \set app_reader_user           'wc_app_reader'
-\set app_reader_pwd            'changme'
+\set app_reader_pwd            'changeme'
 
 \set app_sec_user              'wc_app_secure'
-\set app_sec_pwd               'changme'
+\set app_sec_pwd               'changeme'
 
 
 -- Secure Roles (DO NOT CHANGE!)

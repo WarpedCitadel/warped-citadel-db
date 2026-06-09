@@ -9,7 +9,7 @@ BEGIN
 			NEW.img_uuid := uuidv7();
 	END IF;
 
-	RETURN NEW;
+		RETURN NEW;
 EXCEPTION
 	WHEN OTHERS THEN
 		RAISE EXCEPTION 'SQLERRM: Failed to update uuid: %', SQLERRM;
