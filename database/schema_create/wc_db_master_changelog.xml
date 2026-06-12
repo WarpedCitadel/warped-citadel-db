@@ -26,6 +26,7 @@
 	<!-- Tables -->
 	<include file="/tables/role.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/email_verification_token.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user_audit.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/status_type.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_file.sql"        relativeToChangelogFile="true"/>
@@ -35,12 +36,12 @@
 	<include file="/tables/game_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_image.sql"        relativeToChangelogFile="true"/>
 	<!-- Reference Data -->
-	<include file="/reference/app_users_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/user_profiles_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/profile_images_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/app_files_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_profiles_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_images_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_image_cover_mock.sql"        relativeToChangelogFile="true"/>
+	<!-- <include file="/reference/app_users_mock.sql"        relativeToChangelogFile="true"/> -->
+	<!-- <include file="/reference/user_profiles_mock.sql"        relativeToChangelogFile="true"/> -->
+	<!-- <include file="/reference/profile_images_mock.sql"        relativeToChangelogFile="true"/> -->
+	<!-- <include file="/reference/app_files_mock.sql"        relativeToChangelogFile="true"/> -->
+	<!-- <include file="/reference/game_profiles_mock.sql"        relativeToChangelogFile="true"/> -->
+	<!-- <include file="/reference/game_images_mock.sql"        relativeToChangelogFile="true"/> -->
+	<!-- <include file="/reference/game_image_cover_mock.sql"        relativeToChangelogFile="true"/> -->
 	
 </databaseChangeLog>
