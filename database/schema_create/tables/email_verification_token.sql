@@ -9,7 +9,7 @@ CREATE TABLE email_verification_token (
  passcode			varchar(6)		NOT NULL,
  isused				BOOLEAN			NOT NULL DEFAULT false,
  created_dtm 		TIMESTAMP(6) 	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC'),
- expires_dtm		TIMESTAMP(6)	NOT NUll DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
+ expires_dtm		TIMESTAMP(6)	NOT NUll DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC') + INTERVAL '15 minutes'
 );
 
 
@@ -19,6 +19,10 @@ COMMENT ON TABLE email_verification_token IS 'Token table for user email confirm
 
 --changeset jnolte:20260610_email_verification_token_uk01 runInTransaction:false
 CREATE UNIQUE INDEX CONCURRENTLY email_verification_token_uk01 ON email_verification_token(app_user_id);
+
+
+--changeset jnolte:20260610_email_verification_token_uk02 runInTransaction:false
+CREATE UNIQUE INDEX CONCURRENTLY email_verification_token_uk02 ON email_verification_token(token);
 
 
 -- permissions
