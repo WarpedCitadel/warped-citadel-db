@@ -18,7 +18,7 @@ COMMENT ON TABLE email_verification_token IS 'Token table for user email confirm
 
 
 --changeset jnolte:20260610_email_verification_token_uk01 runInTransaction:false
-CREATE UNIQUE INDEX CONCURRENTLY email_verification_token_uk01 ON email_verification_token(app_user_id);
+CREATE INDEX CONCURRENTLY email_verification_token_uk01 ON email_verification_token(app_user_id);
 
 
 --changeset jnolte:20260610_email_verification_token_uk02 runInTransaction:false
