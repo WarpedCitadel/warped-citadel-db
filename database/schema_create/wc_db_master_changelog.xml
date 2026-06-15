@@ -18,10 +18,11 @@
     <dbms type="postgresql"/>
 	</preConditions>
 	
-	
-		<!-- Trigger Functions -->
-	<include file="/functions/fnc_table_row_audit_trg.sql"        relativeToChangelogFile="true"/>
+	<!-- Functions -->
 	<include file="/functions/fnc_search_users_select.sql"        relativeToChangelogFile="true"/>
+	<include file="/functions/fnc_search_trending_games_select.sql"        relativeToChangelogFile="true"/>
+	<!-- Trigger Functions -->
+	<include file="/functions/fnc_table_row_audit_trg.sql"        relativeToChangelogFile="true"/>
 	<include file="/functions/fnc_table_row_uuid_trg.sql"        relativeToChangelogFile="true"/>
 	<!-- Tables -->
 	<include file="/tables/role.sql"        relativeToChangelogFile="true"/>
@@ -36,12 +37,11 @@
 	<include file="/tables/game_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_image.sql"        relativeToChangelogFile="true"/>
 	<!-- Reference Data -->
-	<!-- <include file="/reference/app_users_mock.sql"        relativeToChangelogFile="true"/> -->
-	<!-- <include file="/reference/user_profiles_mock.sql"        relativeToChangelogFile="true"/> -->
-	<!-- <include file="/reference/profile_images_mock.sql"        relativeToChangelogFile="true"/> -->
-	<!-- <include file="/reference/app_files_mock.sql"        relativeToChangelogFile="true"/> -->
-	<!-- <include file="/reference/game_profiles_mock.sql"        relativeToChangelogFile="true"/> -->
-	<!-- <include file="/reference/game_images_mock.sql"        relativeToChangelogFile="true"/> -->
-	<!-- <include file="/reference/game_image_cover_mock.sql"        relativeToChangelogFile="true"/> -->
-	
+	<include file="/reference/app_users_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/user_profiles_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/profile_images_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/app_files_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_profiles_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_images_mock.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_image_cover_mock.sql"        relativeToChangelogFile="true"/>
 </databaseChangeLog>

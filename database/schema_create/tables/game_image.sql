@@ -8,7 +8,7 @@ CREATE TABLE game_image (
 	iscover				BOOLEAN			NOT NULL DEFAULT FALSE,
 	file_name			varchar(100)	NOT NULL,
 	file_size			varchar(7)		NOT NULL,
-	created_dtm		TIMESTAMP(6)	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
+	created_dtm		TIMESTAMP(6)		NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
 
 
