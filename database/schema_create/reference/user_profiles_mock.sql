@@ -1,7 +1,7 @@
 --liquibase formated sql
 
 
---changeset jnolte:2020523_create_user_profiles
+--changeset jnolte:2020614_create_wc_main_user_profiles
 insert into app_user_profile (app_user_id, display_name, user_bio) values (1, 'bedworthy0', null);
 insert into app_user_profile (app_user_id, display_name, user_bio) values (2, 'lespinal1', null);
 insert into app_user_profile (app_user_id, display_name, user_bio) values (3, 'dkilcoyne2', null);
