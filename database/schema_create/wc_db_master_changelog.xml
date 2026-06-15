@@ -29,27 +29,23 @@
 	<include file="/tables/app_user.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/email_verification_token.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user_audit.sql"        relativeToChangelogFile="true"/>
-	<include file="/tables/status_type.sql"        relativeToChangelogFile="true"/>
-	<include file="/tables/app_file.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user_profile.sql"        relativeToChangelogFile="true"/>
-	<include file="/tables/genre.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/profile_image.sql"        relativeToChangelogFile="true"/>
+	
+	<include file="/tables/game_genre.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/game_type.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/game_platform.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/status_type.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_image.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/game_file.sql"        relativeToChangelogFile="true"/>
 	<!-- Reference Data -->
-	<include file="/reference/wc_main_references/wc_main_users.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/wc_main_references/wc_main_user_profiles.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/wc_main_references/wc_main_profile_images.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/wc_main_references/wc_main_app_files.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/wc_main_references/wc_main_game_profiles.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/wc_main_references/wc_main_game_cover_images.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/wc_main_references/wc_main_game_images.sql"        relativeToChangelogFile="true"/>
-	<!-- Fat Reference Data -->
-<!--<include file="/reference/app_users_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/user_profiles_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/profile_images_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/app_files_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_profiles_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_images_mock.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_image_cover_mock.sql"        relativeToChangelogFile="true"/> -->
+	<include file="/reference/app_user.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/app_user_profile.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/profile_image.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_profile.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_file.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_file_two.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_image_cover.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_image.sql"        relativeToChangelogFile="true"/>
 </databaseChangeLog>

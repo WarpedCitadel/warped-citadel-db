@@ -2,14 +2,16 @@
 
 --changeset jnolte:20260523_create_game_profile
 CREATE TABLE game_profile (
-	id				SERIAL			NOT NULL PRIMARY KEY,
-	app_file_id		BIGINT			NOT NULL REFERENCES app_file (id),
-	title			VARCHAR(100)	NOT NULL,
-	short_desc		TEXT			CONSTRAINT game_short_desc_length CHECK (char_length(short_desc) <= 1000),
-	description		TEXT			CONSTRAINT game_desc_length CHECK (char_length(description) <= 5000),
-	genre_id		SMALLINT		NOT NULL REFERENCES genre (id),
-	created_dtm		TIMESTAMP(6)	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC'),
-	modified_dtm	TIMESTAMP(6)	DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
+	id					SERIAL			NOT NULL PRIMARY KEY,
+	app_user_id			BIGINT			NOT NULL REFERENCES app_user (id),
+	game_profile_uuid	UUID			NOT NULL DEFAULT uuidv7(),
+	title				VARCHAR(100)	NOT NULL,
+	short_desc			TEXT			CONSTRAINT game_short_desc_length CHECK (char_length(short_desc) <= 1000),
+	description			TEXT			CONSTRAINT game_desc_length CHECK (char_length(description) <= 5000),
+	game_genre_id		SMALLINT		NOT NULL REFERENCES game_genre (id),
+	game_type_id		SMALLINT		NOT NULL REFERENCES game_type (id),
+	created_dtm			TIMESTAMP(6)	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC'),
+	modified_dtm		TIMESTAMP(6)	DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
 
 
