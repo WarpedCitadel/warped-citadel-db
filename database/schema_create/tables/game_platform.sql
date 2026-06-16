@@ -1,18 +1,11 @@
 --liquibase formatted sql
 
---changeset jnolte:20260614_create_game_platform
+--changeset jnolte:20260616_create_game_platform
 CREATE TABLE game_platform (
-	id 				SERIAL			NOT NULL PRIMARY KEY,
-	platform_type	VARCHAR(20)		NOT NULL
+ id 				SERIAL 	NOT NULL PRIMARY KEY,
+ platform_id 	BIGINT	NOT NULL REFERENCES platform (id),
+ game_profile_id 	BIGINT	NOT NULL REFERENCES game_profile (id)
 );
-
-
--- create game platforms
-INSERT INTO game_platform (id, platform_type)
-VALUES	(1, 'Play in browser'),
-		(2, 'Windows'),
-		(3, 'Linux'),
-		(4, 'MacOs');
 
 
 COMMENT ON TABLE game_platform IS 'static data for game platforms';
@@ -25,6 +18,6 @@ GRANT SELECT ON TABLE game_platform TO wc_secure_role;
 --rollback REVOKE SELECT ON TABLE game_platform FROM wc_secure_role;
 
 
---changeset jnolte:20260614_grant_read_perms_on_game_type
+--changeset jnolte:20260614_grant_read_perms_on_game_platform
 GRANT SELECT ON TABLE game_platform TO wc_read_only_role;
 --rollback REVOKE SELECT ON TABLE game_platform FROM wc_read_only_role;

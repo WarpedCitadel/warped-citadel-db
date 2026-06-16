@@ -31,12 +31,12 @@
 	<include file="/tables/app_user_audit.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/profile_image.sql"        relativeToChangelogFile="true"/>
-	
 	<include file="/tables/game_genre.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_type.sql"        relativeToChangelogFile="true"/>
-	<include file="/tables/game_platform.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/platform.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/status_type.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_profile.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/game_platform.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_image.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_file.sql"        relativeToChangelogFile="true"/>
 	<!-- Reference Data -->
@@ -44,6 +44,8 @@
 	<include file="/reference/app_user_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/profile_image.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_profile.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_platform.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_platform_two.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_file.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_file_two.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_image_cover.sql"        relativeToChangelogFile="true"/>

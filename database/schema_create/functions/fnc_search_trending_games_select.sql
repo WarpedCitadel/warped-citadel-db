@@ -1,7 +1,7 @@
 -- liquibase formatted sql
 
 
---changeset jnolte:20260614_create_fnc_search_trending_games_select splitStatements:false stripComments:false endDelimiter:; runOnChange:true
+--changeset jnolte:20260616_create_fnc_search_trending_games_select splitStatements:false stripComments:false endDelimiter:; runOnChange:true
 CREATE OR REPLACE FUNCTION fnc_search_trending_games_select(
 	p_title 		TEXT 	DEFAULT NULL,
 	p_game_genre_id	INTEGER DEFAULT	NULL
@@ -13,7 +13,8 @@ RETURNS TABLE(
 	title					TEXT,
 	short_desc				TEXT,
 	game_genre_id			INTEGER,
-	created_dtm				TEXT
+	platform_os				TEXT[],
+	created_dtm				TIMESTAMP
 ) AS $func$
 DECLARE
 	v_base_query 	TEXT;
@@ -24,24 +25,41 @@ BEGIN
 	v_base_query := '
 	WITH main_v AS (
 		SELECT
-			gp.id::INTEGER AS game_profile_id,
+			gp.id::INTEGER as game_profile_id,
 			gp.game_profile_uuid::UUID,
-			gi.img_uuid::UUID AS cover_img,
+			gi.img_uuid::UUID as cover_img,
 			gp.title::TEXT,
 			gp.short_desc::TEXT,
-			g.id::INTEGER AS game_genre_id,
-			gp.created_dtm::TEXT
+			gp.game_genre_id::INTEGER,
+			os.platform_os::TEXT[],
+			gp.created_dtm::TIMESTAMP
 		FROM wc01.game_profile gp
-		LEFT JOIN wc01.game_file gf
-			ON gf.game_profile_id = gp.id
-		LEFT JOIN wc01.game_image gi
-			ON gi.game_profile_id = gp.id
-		LEFT JOIN wc01.game_genre g
-			ON g.id = gp.game_genre_id
-		WHERE gi.iscover = true
-		AND gf.status_type_id = 4
-	)
-	SELECT m.game_profile_id, m.game_profile_uuid, m.cover_img, m.title, m.short_desc, m.game_genre_id, m.created_dtm
+	LEFT JOIN (
+		SELECT
+			gpm.game_profile_id,
+			array_agg(p.platform_type) as platform_os
+	FROM wc01.game_platform gpm
+	INNER JOIN wc01.platform p
+		ON gpm.platform_id = p.id
+	GROUP BY
+			gpm.game_profile_id
+		) os ON gp.id = os.game_profile_id
+	LEFT JOIN wc01.game_file gf
+		ON gf.game_profile_id = gp.id
+		and gf.status_type_id = 4
+	LEFT JOIN wc01.game_image gi
+		ON gi.game_profile_id = gp.id
+		and gi.iscover = true
+		)
+		SELECT
+			m.game_profile_id,
+			m.game_profile_uuid,
+			m.cover_img,
+			m.title,
+			m.short_desc,
+			m.game_genre_id,
+			m.platform_os,
+			m.created_dtm
 	FROM main_v m
 	WHERE ';
 
