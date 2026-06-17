@@ -5,7 +5,8 @@
 CREATE OR REPLACE FUNCTION fnc_search_trending_games_select(
 	p_title 		TEXT 	DEFAULT NULL,
 	p_game_genre_id	INTEGER DEFAULT	NULL,
-	p_platform_os	TEXT[]	DEFAULT NULL
+	p_platform_os	TEXT[]	DEFAULT NULL,
+	p_most_recent	INTEGER	DEFAULT NULL
 )
 RETURNS TABLE(
 	game_profile_id			INTEGER,
@@ -76,6 +77,17 @@ IF p_platform_os IS NOT NULL THEN
 	v_where_clauses := array_append(v_where_clauses, 'm.platform_os @> $3');
 END IF;
 
+IF p_most_recent = 1 AND p_most_recent IS NOT NULL THEN
+	v_where_clauses := array_append(v_where_clauses, 'm.created_dtm >= (NOW() AT TIME ZONE ''UTC'') - INTERVAL ''30 days'' ');
+END IF;
+
+IF p_most_recent = 2 AND p_most_recent IS NOT NULL THEN
+	v_where_clauses := array_append(v_where_clauses, 'm.created_dtm >= (NOW() AT TIME ZONE ''UTC'') - INTERVAL ''7 days'' ');
+END IF;
+
+IF p_most_recent = 3 AND p_most_recent IS NOT NULL THEN
+	v_where_clauses := array_append(v_where_clauses, 'm.created_dtm >= (NOW() AT TIME ZONE ''UTC'') - INTERVAL ''1 days'' ');
+END IF;
 
 v_final_query := v_base_query || array_to_string(v_where_clauses, ' AND ');
 
@@ -83,16 +95,17 @@ RETURN query EXECUTE v_final_query
 USING
 	p_title || '%',
 	p_game_genre_id,
-	ARRAY[p_platform_os];
+	ARRAY[p_platform_os],
+	p_most_recent;
 
 END;
 $func$ LANGUAGE plpgsql;
 
 
-COMMENT ON FUNCTION fnc_search_trending_games_select(TEXT, INTEGER, TEXT[]) IS '
+COMMENT ON FUNCTION fnc_search_trending_games_select(TEXT, INTEGER, TEXT[], INTEGER) IS '
 fetches game profiles for applications main page.
 
-The function provides dynamically search sorting functionality based on titles and genres.
+The function provides dynamically searched by sorting based on title searches, genre types, most recent, and OS compatibility.
 ';
 
 
