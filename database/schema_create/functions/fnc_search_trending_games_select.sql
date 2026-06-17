@@ -6,7 +6,8 @@ CREATE OR REPLACE FUNCTION fnc_search_trending_games_select(
 	p_title 		TEXT 	DEFAULT NULL,
 	p_game_genre_id	INTEGER DEFAULT	NULL,
 	p_platform_os	TEXT[]	DEFAULT NULL,
-	p_most_recent	INTEGER	DEFAULT NULL
+	p_most_recent	INTEGER	DEFAULT NULL,
+	p_game_type		INTEGER	DEFAULT	NULL
 )
 RETURNS TABLE(
 	game_profile_id			INTEGER,
@@ -16,6 +17,7 @@ RETURNS TABLE(
 	short_desc				TEXT,
 	game_genre_id			INTEGER,
 	platform_os				TEXT[],
+	game_type_id			INTEGER,
 	created_dtm				TIMESTAMP
 ) AS $func$
 DECLARE
@@ -26,42 +28,44 @@ BEGIN
 
 	v_base_query := '
 	WITH main_v AS (
-		SELECT
-			gp.id::INTEGER as game_profile_id,
-			gp.game_profile_uuid::UUID,
-			gi.img_uuid::UUID as cover_img,
-			gp.title::TEXT,
-			gp.short_desc::TEXT,
-			gp.game_genre_id::INTEGER,
-			os.platform_os::TEXT[],
-			gp.created_dtm::TIMESTAMP
-		FROM wc01.game_profile gp
-	LEFT JOIN (
-		SELECT
-			gpm.game_profile_id,
-			array_agg(p.platform_type) as platform_os
+SELECT
+	gp.id::INTEGER as game_profile_id,
+	gp.game_profile_uuid::UUID,
+	gi.img_uuid::UUID as cover_img,
+	gp.title::TEXT,
+	gp.short_desc::TEXT,
+	gp.game_genre_id::INTEGER,
+	os.platform_os::TEXT[],
+	gp.game_type_id::INTEGER,
+	gp.created_dtm::TIMESTAMP
+	from wc01.game_profile gp
+LEFT JOIN (
+	SELECT
+		gpm.game_profile_id,
+		ARRAY_AGG(p.platform_type) as platform_os
 	FROM wc01.game_platform gpm
 	INNER JOIN wc01.platform p
 		ON gpm.platform_id = p.id
 	GROUP BY
-			gpm.game_profile_id
-		) os ON gp.id = os.game_profile_id
-	LEFT JOIN wc01.game_file gf
-		ON gf.game_profile_id = gp.id
-		and gf.status_type_id = 4
-	LEFT JOIN wc01.game_image gi
-		ON gi.game_profile_id = gp.id
-		and gi.iscover = true
-		)
-		SELECT
-			m.game_profile_id,
-			m.game_profile_uuid,
-			m.cover_img,
-			m.title,
-			m.short_desc,
-			m.game_genre_id,
-			m.platform_os,
-			m.created_dtm
+		gpm.game_profile_id
+	) os ON gp.id = os.game_profile_id
+LEFT JOIN wc01.game_file gf
+	ON gf.game_profile_id = gp.id
+	AND gf.status_type_id = 4
+LEFT JOIN wc01.game_image gi
+	ON gi.game_profile_id = gp.id
+	AND gi.iscover = true
+	)
+	SELECT
+		m.game_profile_id,
+	 	m.game_profile_uuid,
+ 		m.cover_img,
+		m.title,
+		m.short_desc,
+		m.game_genre_id,
+		m.platform_os,
+		m.game_type_id,
+		m.created_dtm
 	FROM main_v m
 	WHERE ';
 
@@ -78,16 +82,21 @@ IF p_platform_os IS NOT NULL THEN
 END IF;
 
 IF p_most_recent = 1 AND p_most_recent IS NOT NULL THEN
-	v_where_clauses := array_append(v_where_clauses, 'm.created_dtm >= (NOW() AT TIME ZONE ''UTC'') - INTERVAL ''30 days'' ');
+	v_where_clauses := array_append(v_where_clauses, 'm.created_dtm >= (NOW() AT TIME ZONE ''UTC'') - INTERVAL ''30 days''');
 END IF;
 
 IF p_most_recent = 2 AND p_most_recent IS NOT NULL THEN
-	v_where_clauses := array_append(v_where_clauses, 'm.created_dtm >= (NOW() AT TIME ZONE ''UTC'') - INTERVAL ''7 days'' ');
+	v_where_clauses := array_append(v_where_clauses, 'm.created_dtm >= (NOW() AT TIME ZONE ''UTC'') - INTERVAL ''7 days''');
 END IF;
 
 IF p_most_recent = 3 AND p_most_recent IS NOT NULL THEN
-	v_where_clauses := array_append(v_where_clauses, 'm.created_dtm >= (NOW() AT TIME ZONE ''UTC'') - INTERVAL ''1 days'' ');
+	v_where_clauses := array_append(v_where_clauses, 'm.created_dtm >= (NOW() AT TIME ZONE ''UTC'') - INTERVAL ''1 days''');
 END IF;
+
+IF p_game_type IS NOT NULL THEN
+	v_where_clauses := array_append(v_where_clauses, 'm.game_type_id = $4');
+END IF;
+
 
 v_final_query := v_base_query || array_to_string(v_where_clauses, ' AND ');
 
@@ -95,14 +104,15 @@ RETURN query EXECUTE v_final_query
 USING
 	p_title || '%',
 	p_game_genre_id,
-	ARRAY[p_platform_os],
-	p_most_recent;
+	array[p_platform_os]
+	p_most_recent,
+	p_game_type;
 
 END;
 $func$ LANGUAGE plpgsql;
 
 
-COMMENT ON FUNCTION fnc_search_trending_games_select(TEXT, INTEGER, TEXT[], INTEGER) IS '
+COMMENT ON FUNCTION fnc_search_trending_games_select(TEXT, INTEGER, TEXT[], INTEGER, INTEGER) IS '
 fetches game profiles for applications main page.
 
 The function provides dynamically searched by sorting based on title searches, genre types, most recent, and OS compatibility.
