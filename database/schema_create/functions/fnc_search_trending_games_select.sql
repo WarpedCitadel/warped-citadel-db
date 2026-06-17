@@ -4,7 +4,8 @@
 --changeset jnolte:20260616_create_fnc_search_trending_games_select splitStatements:false stripComments:false endDelimiter:; runOnChange:true
 CREATE OR REPLACE FUNCTION fnc_search_trending_games_select(
 	p_title 		TEXT 	DEFAULT NULL,
-	p_game_genre_id	INTEGER DEFAULT	NULL
+	p_game_genre_id	INTEGER DEFAULT	NULL,
+	p_platform_os	TEXT[]	DEFAULT NULL
 )
 RETURNS TABLE(
 	game_profile_id			INTEGER,
@@ -71,19 +72,24 @@ IF p_game_genre_id >= 1 AND p_game_genre_id IS NOT NULL THEN
 	v_where_clauses := array_append(v_where_clauses, 'm.game_genre_id = $2');
 END IF;
 
+IF p_platform_os IS NOT NULL THEN
+	v_where_clauses := array_append(v_where_clauses, 'm.platform_os @> $3');
+END IF;
+
 
 v_final_query := v_base_query || array_to_string(v_where_clauses, ' AND ');
 
 RETURN query EXECUTE v_final_query
 USING
 	p_title || '%',
-	p_game_genre_id;
+	p_game_genre_id,
+	ARRAY[p_platform_os];
 
 END;
 $func$ LANGUAGE plpgsql;
 
 
-COMMENT ON FUNCTION fnc_search_trending_games_select(TEXT, INTEGER) IS '
+COMMENT ON FUNCTION fnc_search_trending_games_select(TEXT, INTEGER, TEXT[]) IS '
 fetches game profiles for applications main page.
 
 The function provides dynamically search sorting functionality based on titles and genres.
