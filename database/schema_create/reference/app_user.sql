@@ -1,3 +1,5 @@
+BEGIN;
+
 insert into app_user (id, username, email, password_hash, isverified) values (1, 'mkeyworth0', 'yjobson0@intel.com', '$2a$04$pQMBieVx.oAwkzPPJX890eI63gFNhHPOcHYJtCSYRT7Im1W2ahGJy', true);
 insert into app_user (id, username, email, password_hash, isverified) values (2, 'ajillitt1', 'hleale1@shop-pro.jp', '$2a$04$dJfPeaOl30xQATcPLmXsquyAmaQxn99wAlivt8D6S/la2yACXDd2a', true);
 insert into app_user (id, username, email, password_hash, isverified) values (3, 'pgillice2', 'sluttger2@biblegateway.com', '$2a$04$l3LNHoMvC2jxmBFogB6bbO2SwjF17MhJcXbGw4qNgojAhI19ep21a', true);
@@ -998,3 +1000,6 @@ insert into app_user (id, username, email, password_hash, isverified) values (99
 insert into app_user (id, username, email, password_hash, isverified) values (998, 'hranyelldrp', 'hhopkinsrp@alibaba.com', '$2a$04$V9Gh.KrZXitAgPexfsMuNe8HhDOmGUemjrnuTPeu4idMokW/zRWEC', true);
 insert into app_user (id, username, email, password_hash, isverified) values (999, 'wtrewinnardrq', 'drickardesrq@ask.com', '$2a$04$4bbz/qfIPCoFqBGQxJ9.F.IWN5PDh/9MacrU54S6HPRrjMoZPbojW', true);
 insert into app_user (id, username, email, password_hash, isverified) values (1000, 'mtilburyrr', 'dpardirr@bravesites.com', '$2a$04$tJtacxE/5.iy2Wf8cCQ4reLneKSzj4ozHB8nwstl4uErQzyAYzSMW', true);
+
+SELECT setval('app_user_id_seq', (SELECT MAX(id) FROM app_user));
+COMMIT;

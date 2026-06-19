@@ -3,8 +3,9 @@
 --changeset jnolte:20260616_create_game_platform
 CREATE TABLE game_platform (
  id 				SERIAL 	NOT NULL PRIMARY KEY,
- platform_id 	BIGINT	NOT NULL REFERENCES platform (id),
- game_profile_id 	BIGINT	NOT NULL REFERENCES game_profile (id)
+ platform_id 		BIGINT	NOT NULL REFERENCES platform (id),
+ game_profile_id 	BIGINT	NOT NULL REFERENCES game_profile (id),
+ CONSTRAINT unique_game_platform UNIQUE (platform_id, game_profile_id)
 );
 
 
