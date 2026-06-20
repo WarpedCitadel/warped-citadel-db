@@ -49,7 +49,7 @@ LEFT JOIN (
 	GROUP BY
 		gpm.game_profile_id
 	) os ON gp.id = os.game_profile_id
-LEFT JOIN wc01.game_file gf
+INNER JOIN wc01.game_file gf
 	ON gf.game_profile_id = gp.id
 	AND gf.status_type_id = 4
 LEFT JOIN wc01.game_image gi
