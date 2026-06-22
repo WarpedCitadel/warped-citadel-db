@@ -64,6 +64,41 @@ Create USER :schema_owner WITH
 
 GRANT :schema_owner_role TO :schema_owner;
 
+
+SELECT COUNT(0) = 1 AS localhost WHERE inet_server_addr() = '127.0.0.1' OR inet_server_addr() = '::1'
+\gset
+\if :localhost
+    -- NOTE: Needed by localhost PostgreSQL to allow schema_owner to create and upgrade extensions.
+    --       We will revoke this privilege before exiting.
+    --       This statement will fail on RDS.
+    ALTER USER :schema_owner SUPERUSER;
+\else
+    -- NOTE: Needed by AWS RDS to allow schema_owner to create and upgrade extensions.
+    --       This statement will fail on localhost PostgreSQL.
+    GRANT rds_superuser TO :schema_owner;
+\endif
+
+/* NOTE: With AWS RDS, the rds_superuser role granted to the master user (postgres) requires it to be
+         a memeber of the role (user) that will own the database in order to create the database on its behalf.
+         We will revoke this privilege before exiting. */
+GRANT :schema_owner TO :aws_rds_superuser;
+
+
+\du+
+
+
+/* Create Secure User (pega_app_secure) */
+CREATE USER :app_sec_user WITH LOGIN ENCRYPTED PASSWORD :'app_sec_pwd';
+
+GRANT :app_sec_role TO :app_sec_user;
+
+
+/* Create Read Only User (pega_app_reader) */
+CREATE USER :app_reader_user WITH LOGIN ENCRYPTED PASSWORD :'app_reader_pwd';
+
+GRANT :app_reader_role TO :app_reader_user;
+
+
 /* Create Secure User (wc_app_secure) */
 CREATE USER :app_sec_user WITH
     LOGIN
@@ -155,5 +190,12 @@ GRANT USAGE ON SCHEMA wc01          TO :app_reader_role;
 REVOKE ALL ON DATABASE :dbname FROM PUBLIC;
 
 
+REVOKE :schema_owner FROM :aws_rds_superuser;
+
+SELECT COUNT(0) = 1 AS localhost WHERE inet_server_addr() = '127.0.0.1' OR inet_server_addr() = '::1'
+\gset
+\if :localhost
+    ALTER USER :schema_owner NOSUPERUSER;
+\endif
 
 \du+
