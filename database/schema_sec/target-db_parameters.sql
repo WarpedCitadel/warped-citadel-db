@@ -15,27 +15,31 @@
 *    renaming this file. The created_database.sql and rip_database.sql scripts will then dynamically
 *    execute the correct parameters file.
 *
-*    Ex: psql --host=localhost --username=postgres --dbname=postgres --echo-all -f create_database.sql -v vdbname='wc_dev'
+*    Ex: psql --host=localhost --username=postgres --dbname=postgres --echo-all -f create_database.sql -v vdbname='wc_local'
 *
 *
 *
 ***************************************************************************************/
 
 -- Warped Citadel Database
-\set dbname                    'wc_dev'
+\set dbname                    'wc_local'
+
+
+-- AWS Aurora Master User
+\set aws_rds_superuser         'CHANGEME'
 
 
 -- Schema Owner User
 \set schema_owner              'dbo_wc'
-\set schema_owner_pwd          'changeme'
+\set schema_owner_pwd          'CHANGEME'
 
 
 -- Secure Users
 \set app_reader_user           'wc_app_reader'
-\set app_reader_pwd            'changeme'
+\set app_reader_pwd            'CHANGEME'
 
 \set app_sec_user              'wc_app_secure'
-\set app_sec_pwd               'changeme'
+\set app_sec_pwd               'CHANGEME'
 
 
 -- Secure Roles (DO NOT CHANGE!)
