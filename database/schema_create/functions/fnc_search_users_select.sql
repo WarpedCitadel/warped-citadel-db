@@ -5,7 +5,7 @@
 CREATE OR REPLACE FUNCTION fnc_search_users_select(
 	p_display_name 	TEXT 	DEFAULT NULL,
 	p_role			TEXT 	DEFAULT NULL,
-	p_status		boolean DEFAULT NULL
+	p_status		BOOLEAN DEFAULT NULL
 )
 RETURNS TABLE(
 	user_uuid 		UUID,
@@ -20,7 +20,7 @@ RETURNS TABLE(
 DECLARE
 	v_base_query 	TEXT;
 	v_where_clauses TEXT[] := ARRAY['TRUE'];
-	v_final_query 	Text;
+	v_final_query 	TEXT;
 BEGIN
 
 	v_base_query := '
