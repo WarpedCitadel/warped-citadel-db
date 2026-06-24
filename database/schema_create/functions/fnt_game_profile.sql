@@ -2,7 +2,7 @@
 
 
 --changeset jnolte:20260623_create_fnt_game_profile_delete splitStatements:false stripComments:false endDelimiter:;
-CREATE OR REPLACE FUNCTION fnt_game_profile_trg() RETURNS trigger AS
+CREATE OR REPLACE FUNCTION fnt_game_profile_trg() RETURNS TRIGGER AS
 $func$
 BEGIN
 	IF (TG_OP = 'DELETE') THEN
@@ -21,6 +21,7 @@ BEGIN
 EXCEPTION
 	WHEN OTHERS THEN
 		RAISE EXCEPTION E'SQLERRM: %\nSQLSTATE: %\ngame_profile_delete failed to delete game profile.', SQLERRM, SQLSTATE;
+		
 END;
 $func$
 LANGUAGE plpgsql;
