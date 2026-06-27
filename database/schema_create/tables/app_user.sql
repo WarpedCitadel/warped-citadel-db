@@ -26,6 +26,20 @@ CREATE UNIQUE INDEX CONCURRENTLY app_user_uk01 ON app_user(lower(username));
 CREATE UNIQUE INDEX CONCURRENTLY app_user_uk02 ON app_user(user_uuid);
 
 
+-- sequence
+--changeset jnolte:20260627_restart_app_user_id_seq
+ALTER SEQUENCE app_user_id_seq
+ INCREMENT BY 1
+ START WITH 1
+ RESTART WITH 1
+ NO MAXVALUE
+ NO MINVALUE
+ CACHE 1
+ NO CYCLE;
+--xrollback DROP SEQUENCE IF EXISTS app_user_id_seq;
+--rollback not required
+
+
 --triggers
 --changeset jnolte:20260526_create_trg_app_user_session
 CREATE TRIGGER app_user_session
@@ -37,7 +51,9 @@ BEFORE UPDATE ON app_user
 -- permissions
 --changeset jnolte:20260506_grant_sec_perms_app_user
 GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE app_user TO wc_secure_role;
+GRANT USAGE ON SEQUENCE app_user_id_seq TO wc_secure_role;
 --rollback REVOKE SELECT, INSERT, UPDATE, DELETE ON TABLE app_user FROM wc_secure_role;
+--rollback REVOKE USAGE ON SEQUENCE app_user_id_seq FROM wc_secure_role;
 
 
 --changeset jnolte:20260506_grant_read_perms_on_app_user

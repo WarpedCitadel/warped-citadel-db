@@ -21,12 +21,28 @@ BEFORE INSERT ON app_user_audit
 --rollback DROP TRIGGER IF EXISTS app_user_session ON app_user_audit;
 
 
+-- sequence
+--changeset jnolte:20260627_restart_app_user_audit_id_seq
+ALTER SEQUENCE app_user_audit_id_seq
+ INCREMENT BY 1
+ START WITH 1
+ RESTART WITH 1
+ NO MAXVALUE
+ NO MINVALUE
+ CACHE 1
+ NO CYCLE;
+--xrollback DROP SEQUENCE IF EXISTS app_user_audit_id_seq;
+--rollback not required
+
+
 -- permissions
 --changeset jnolte:20260527_grant_sec_perms_app_user_audit
-GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE app_user TO wc_secure_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE app_user_audit TO wc_secure_role;
+GRANT USAGE ON SEQUENCE app_user_audit_id_seq TO wc_secure_role;
 --rollback REVOKE SELECT, INSERT, UPDATE, DELETE ON TABLE app_user_audit FROM wc_secure_role;
+--rollback REVOKE USAGE ON SEQUENCE app_user_audit_id_seq FROM wc_secure_role;
 
 
 --changeset jnolte:20260506_grant_read_perms_on_app_user_audit
-GRANT SELECT ON TABLE app_user TO wc_read_only_role;
+GRANT SELECT ON TABLE app_user_audit TO wc_read_only_role;
 --rollback REVOKE SELECT ON TABLE app_user_audit FROM wc_read_only_role;
