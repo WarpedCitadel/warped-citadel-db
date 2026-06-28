@@ -19,10 +19,34 @@ COMMENT ON TABLE game_profile IS 'Detailed information for uploaded games';
 --rollback DROP TABLE IF EXISTS game_profile;
 
 
+--triggers
+--changeset jnolte:20260623_create_trg_game_profile_delete
+CREATE TRIGGER game_profile_delete
+BEFORE DELETE ON game_profile
+	FOR EACH ROW EXECUTE FUNCTION fnt_game_profile_trg();
+--rollback DROP TRIGGER IF EXISTS game_profile_delete ON game_profile;
+
+
+-- sequence
+--changeset jnolte:20260627_restart_game_profile_id_seq
+ALTER SEQUENCE game_profile_id_seq
+ INCREMENT BY 1
+ START WITH 1
+ RESTART WITH 1
+ NO MAXVALUE
+ NO MINVALUE
+ CACHE 1
+ NO CYCLE;
+--xrollback DROP SEQUENCE IF EXISTS game_profile_id_seq;
+--rollback not required
+
+
 -- permissions
 --changeset jnolte:20260521_grant_sec_perms_game_profile
 GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE game_profile TO wc_secure_role;
+GRANT USAGE ON SEQUENCE game_profile_id_seq TO wc_secure_role;
 --rollback REVOKE SELECT, INSERT, UPDATE, DELETE ON TABLE game_profile FROM wc_secure_role;
+--rollback REVOKE USAGE ON SEQUENCE game_profile_id_seq FROM wc_secure_role;
 
 
 --changeset jnolte:20260521_grant_read_perms_on_game_profile

@@ -20,7 +20,7 @@ VALUES	(1, 'user'),
 -- permissions
 --changeset jnolte:20260506_grant_sec_perms_role
 GRANT SELECT ON TABLE role TO wc_secure_role;
---rollback REVOKE SELECT, INSERT, UPDATE, DELETE ON TABLE role FROM wc_secure_role;
+--rollback REVOKE SELECT ON TABLE role FROM wc_secure_role;
 
 
 --changeset jnolte:20260506_grant_read_perms_on_role

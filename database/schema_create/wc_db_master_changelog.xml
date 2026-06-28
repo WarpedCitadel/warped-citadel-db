@@ -24,6 +24,7 @@
 	<!-- Trigger Functions -->
 	<include file="/functions/fnc_table_row_audit_trg.sql"        relativeToChangelogFile="true"/>
 	<include file="/functions/fnc_table_row_uuid_trg.sql"        relativeToChangelogFile="true"/>
+	<include file="/functions/fnt_game_profile.sql"        relativeToChangelogFile="true"/>
 	<!-- Tables -->
 	<include file="/tables/role.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user.sql"        relativeToChangelogFile="true"/>

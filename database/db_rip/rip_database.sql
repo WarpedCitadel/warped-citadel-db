@@ -17,7 +17,7 @@
 *    * Excute from /a_warpedcitadel/warped-citadel-db/database/db_rip (For Windows, use WSL. CMD does not recongize :parameters)
 *    * Execute as postgreSQL root user: postgres
 *    
-*    psql.exe --host=localhost --username=postgres --dbname=postgres --echo-all -f rip_database.sql -v vdbname='wc_dev'
+*    psql.exe --host=localhost --username=postgres --dbname=postgres --echo-all -f rip_database.sql -v vdbname='wc_local'
 *    
 * 
 ****************************************************************************************/
@@ -37,8 +37,11 @@
 -- ===========================================
 -- Drop the Warped Citadel DATABASE
 -- ===========================================
+GRANT :schema_owner TO :aws_rds_superuser;
+
 DROP DATABASE IF EXISTS :dbname;
 
+REVOKE :schema_owner FROM :aws_rds_superuser;
 
 \l+
 
