@@ -1,4 +1,4 @@
-insert into game_image (game_profile_id, file_name, file_size, iscover) values (1, 'porttitor.png', '123B', true);
+insert into game_image (game_profile_id, img_uuid, file_name, file_size, iscover) values (1, '019f4db3-5514-7aba-bc65-cac4eb36c15a', 'index.apple-touch-icon.png', '14KB', true);
 insert into game_image (game_profile_id, file_name, file_size, iscover) values (2, 'nulla.jpeg', '47B', true);
 insert into game_image (game_profile_id, file_name, file_size, iscover) values (3, 'in.jpeg', '123B', true);
 insert into game_image (game_profile_id, file_name, file_size, iscover) values (4, 'scelerisque.jpg', '123B', true);

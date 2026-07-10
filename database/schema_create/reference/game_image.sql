@@ -1,9 +1,5 @@
-insert into game_image (game_profile_id, file_name, file_size, iscover) values (919, 'eget.png', '47B', false);
-insert into game_image (game_profile_id, file_name, file_size, iscover) values (779, 'ut.jpg', '123B', false);
-insert into game_image (game_profile_id, file_name, file_size, iscover) values (437, 'dictumst.jpeg', '2MB', false);
-insert into game_image (game_profile_id, file_name, file_size, iscover) values (21, 'convallis.jpg', '123B', false);
-insert into game_image (game_profile_id, file_name, file_size, iscover) values (279, 'dui.png', '1MB', false);
-insert into game_image (game_profile_id, file_name, file_size, iscover) values (765, 'sodales.jpg', '1MB', false);
+insert into game_image (game_profile_id, img_uuid, file_name, file_size, iscover) values (1, '019f4db3-5524-7608-ad26-4a7733ffd96e', 'index.png', '20B', false);
+insert into game_image (game_profile_id, img_uuid, file_name, file_size, iscover) values (1, '019f4db3-5524-766f-997f-62e3e084c13a', 'index.icon.png', '4KB', false);
 insert into game_image (game_profile_id, file_name, file_size, iscover) values (725, 'porttitor.jpeg', '47B', false);
 insert into game_image (game_profile_id, file_name, file_size, iscover) values (839, 'pellentesque.jpg', '1MB', false);
 insert into game_image (game_profile_id, file_name, file_size, iscover) values (587, 'vivamus.jpg', '1MB', false);

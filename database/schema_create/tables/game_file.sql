@@ -8,6 +8,7 @@ CREATE TABLE game_file (
   file_name 			VARCHAR(100)	NOT NULL,
   file_version 			VARCHAR(20)		NOT NULL,
   file_size 			VARCHAR(7)		NOT NULL,
+  isbrowser				BOOL			NOT NULL DEFAULT FALSE,
   status_type_id 		SMALLINT 		NOT NULL REFERENCES status_type (id) DEFAULT 1,
   created_dtm 			TIMESTAMP(6) 	NOT NULL DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC'),
   modified_dtm			TIMESTAMP(6)	DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')

@@ -1,9 +1,9 @@
 BEGIN;
 
-insert into app_user (id, username, email, password_hash, isverified) values (1, 'mkeyworth0', 'yjobson0@intel.com', '$2a$04$pQMBieVx.oAwkzPPJX890eI63gFNhHPOcHYJtCSYRT7Im1W2ahGJy', true);
-insert into app_user (id, username, email, password_hash, isverified) values (2, 'ajillitt1', 'hleale1@shop-pro.jp', '$2a$04$dJfPeaOl30xQATcPLmXsquyAmaQxn99wAlivt8D6S/la2yACXDd2a', true);
-insert into app_user (id, username, email, password_hash, isverified) values (3, 'pgillice2', 'sluttger2@biblegateway.com', '$2a$04$l3LNHoMvC2jxmBFogB6bbO2SwjF17MhJcXbGw4qNgojAhI19ep21a', true);
-insert into app_user (id, username, email, password_hash, isverified) values (4, 'thember3', 'rmcilrath3@edublogs.org', '$2a$04$YqrC5qLS9PHgTLZFDQEuceGBTZjYoMf6MEQbMnLlCX7v3HqlhUQZ.', true);
+insert into app_user (id, username, email, password_hash, isverified) values (1, 'jaeger@warpedcitadel.com', 'jaeger.nolte@gmail.com', '$2a$10$FbYjv1QzVwHJ0rQimOT2Y.EnP4pIla2rpv2l0xKlejN1khAUMHHvO', true);
+insert into app_user (id, username, email, password_hash, isverified) values (2, 'jared@warpedcitadel.com', 'jaredwood002@gmail.com', '$2a$10$eeDD3jh6nga44kaXsyeksePdVlewniriVAt.Iq/avT0XzK/MyDvTC', true);
+insert into app_user (id, username, email, password_hash, isverified) values (3, 'kaden@warpedcitadel.com', 'kadenmisenheimer@gmail.com', '$2a$10$9fFx9BQwmZmBey2Cfix6BOYvSTLctEYZYln.IcjKYXasJS74y2GZi', true);
+insert into app_user (id, username, email, password_hash, isverified) values (4, 'will@warpedcitadel.com', 'will@gmail.com', '$2a$10$p/1mahqciuZIXSadV3GAqOcWqqxfVgktJftZ7uUoX4gM75IgzgsgO', true);
 insert into app_user (id, username, email, password_hash, isverified) values (5, 'jdeboo4', 'adeverale4@addtoany.com', '$2a$04$8Y.RH/AYq8Xy7KYhzoj/2.EypEpaafckUxYU.cMky3i6k2fFCvpqe', true);
 insert into app_user (id, username, email, password_hash, isverified) values (6, 'kderry5', 'rolliff5@spiegel.de', '$2a$04$AzSPUQ4VZoRHQJO3ri6TDOC96FiRKNoK2fpXCAratFuzzw..X0DIO', true);
 insert into app_user (id, username, email, password_hash, isverified) values (7, 'mcohan6', 'adowne6@comsenz.com', '$2a$04$EOv5Y1WRW.xF.gUKozKWKu6IpoR.kWo21bYf5yS1jRE12jobzxCuW', true);
