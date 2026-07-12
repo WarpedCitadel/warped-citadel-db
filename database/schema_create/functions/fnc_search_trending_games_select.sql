@@ -12,7 +12,7 @@ CREATE OR REPLACE FUNCTION fnc_search_trending_games_select(
 RETURNS TABLE(
 	game_profile_id			INTEGER,
 	game_profile_uuid 		UUID,
-	img_uuid				UUID,
+	file_name				TEXT,
 	title					TEXT,
 	short_desc				TEXT,
 	game_genre_id			INTEGER,
@@ -31,7 +31,7 @@ BEGIN
 SELECT
 	gp.id::INTEGER as game_profile_id,
 	gp.game_profile_uuid::UUID,
-	gi.img_uuid::UUID as cover_img,
+	gi.file_name::TEXT as cover_img,
 	gp.title::TEXT,
 	gp.short_desc::TEXT,
 	gp.game_genre_id::INTEGER,
