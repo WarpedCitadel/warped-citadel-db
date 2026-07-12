@@ -46,9 +46,6 @@
 	<include file="/reference/profile_image.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_platform.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_platform_two.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_file.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_file_two.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/game_image_cover.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_image.sql"        relativeToChangelogFile="true"/>
+	<include file="/reference/game_file.sql"        relativeToChangelogFile="true"/>
 </databaseChangeLog>
