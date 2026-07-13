@@ -44,6 +44,13 @@ BEFORE INSERT OR UPDATE ON app_user_profile
 --rollback DROP TRIGGER IF EXISTS app_user_profile_session ON app_user_profile;
 
 
+--changeset jnolte:20260713_create_trg_insert_default_img
+CREATE TRIGGER insert_default_img
+AFTER INSERT ON app_user_profile
+	FOR EACH ROW EXECUTE FUNCTION fnc_table_row_profile_image_trg();
+--rollback DROP TRIGGER IF EXISTS insert_default_img ON app_user_profile;
+
+
 -- permissions
 --changeset jnolte:20260506_grant_sec_perms_app_user_profile
 GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE app_user_profile TO wc_secure_role;
