@@ -1,4 +1,4 @@
-insert into game_image (game_profile_id, img_uuid, file_name, file_size, iscover) values (1, '019f58e5-03f0-78df-b44f-458b7aed6d1d', 'b6a9662a-69ff-4bad-ad46-d5a6d7089d95.png', '125KB', false);
+insert into game_image (game_profile_id, img_uuid, file_name, file_size, iscover) values (1, '019f58e5-03f0-78df-b44f-458b7aed6d1d', 'b6a9662a-69ff-4bad-ad46-d5a6d7089d95.png', '125KB', true);
 insert into game_image (game_profile_id, img_uuid, file_name, file_size, iscover) values (1, '019f58e5-03f1-71df-a038-14edd637322e', '445fd2a5-8377-4cad-842a-93facf73da0c.png', '8KB', false);
 insert into game_image (game_profile_id, img_uuid, file_name, file_size, iscover) values (1, '019f58e5-03f1-720c-b456-a561293ee25a', 'd7464ccf-162c-456c-87b9-a6a8a0324ada.png', '289KB', false);
 insert into game_image (game_profile_id, img_uuid, file_name, file_size, iscover) values (2, '019f58f6-e243-7009-9a0c-5735de2f84b8', '2b085cff-b879-4e64-991b-f95386905541.png', '14KB', true);
