@@ -33,6 +33,7 @@
 	<include file="/tables/app_user_audit.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/profile_image.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/profile_image_staging.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_genre.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_type.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/platform.sql"        relativeToChangelogFile="true"/>

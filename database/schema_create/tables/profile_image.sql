@@ -19,14 +19,6 @@ COMMENT ON TABLE profile_image IS 'Object metadata for profile image uploads.';
 CREATE UNIQUE INDEX CONCURRENTLY profile_image_uk01 ON profile_image(app_user_profile_id);
 
 
---triggers
---changeset jnolte:20260604_create_trg_update_img_uuid
-CREATE TRIGGER update_img_uuid
-BEFORE UPDATE ON profile_image
-	FOR EACH ROW EXECUTE FUNCTION fnc_table_row_uuid_trg();
---rollback DROP TRIGGER IF EXISTS update_img_uuid ON profile_image;
-
-
 -- sequence
 --changeset jnolte:20260627_restart_profile_image_id_seq
 ALTER SEQUENCE profile_image_id_seq

@@ -17,7 +17,7 @@ BEGIN
 
 		random_index := FLOOR(RANDOM() * ARRAY_LENGTH(image_name_array, 1)) + 1;
 			
-		INSERT INTO profile_image (
+		INSERT INTO wc01.profile_image (
 			app_user_profile_id,
 			file_name,
 			img_uuid,
