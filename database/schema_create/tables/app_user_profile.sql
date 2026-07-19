@@ -5,7 +5,7 @@ CREATE TABLE app_user_profile (
   id 				SERIAL 			NOT NULL PRIMARY KEY,
   app_user_id 		BIGINT 			NOT NULL REFERENCES app_user (id),
   display_name		Varchar(50),
-  user_bio			TEXT 			CONSTRAINT user_bio_length CHECK (char_length(user_bio) <= 5000),
+  user_bio			TEXT 			CONSTRAINT user_bio_length CHECK (char_length(user_bio) <= 2000),
   modified_dtm		TIMESTAMP(6)	NOT NUll DEFAULT (CURRENT_TIMESTAMP(6) AT TIME ZONE 'UTC')
 );
 

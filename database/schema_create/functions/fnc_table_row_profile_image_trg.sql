@@ -6,8 +6,8 @@ CREATE OR REPLACE FUNCTION fnc_table_row_profile_image_trg() RETURNS TRIGGER AS
 $func$
 DECLARE
 
-	image_name_array TEXT[] := ARRAY['1657271b-068e-4655-aebb-692065852ade.png'];
-	image_uuid_array UUID[] := ARRAY['019f5cd2-68d8-7e7d-901a-7fc58250e3ac'];
+	image_name_array TEXT[] := ARRAY['9d047469-080d-4c06-912d-8b9aec684e0b.png'];
+	image_uuid_array UUID[] := ARRAY['019f7b16-635a-7c13-b15d-ed3c75ad61f9'];
 	image_size_array TEXT[] := ARRAY['1KB'];
 	random_index INT;
 
