@@ -41,6 +41,7 @@
 	<include file="/tables/game_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_platform.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_image.sql"        relativeToChangelogFile="true"/>
+		<include file="/tables/game_image_staging.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_file.sql"        relativeToChangelogFile="true"/>
 	<!-- Reference Data -->
 	<include file="/reference/app_user.sql"        relativeToChangelogFile="true"/>
