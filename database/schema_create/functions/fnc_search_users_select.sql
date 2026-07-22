@@ -11,6 +11,7 @@ RETURNS TABLE(
 	user_uuid 		UUID,
 	app_user_id 	INTEGER,
 	img_uuid 		UUID,
+	file_name 		TEXT,
 	display_name 	TEXT,
 	email 			TEXT,
 	role_type 		TEXT,
@@ -29,6 +30,7 @@ BEGIN
 			au.user_uuid::UUID,
 			aup.app_user_id::INTEGER,
 			pi.img_uuid::UUID,
+			pi.file_name::TEXT,
 			COALESCE(aup.display_name, au.username)::TEXT
 				AS display_name,
 			au.email::TEXT,
@@ -43,7 +45,7 @@ BEGIN
 		LEFT JOIN wc01.profile_image pi
 			ON aup.id = pi.app_user_profile_id
 	)
-	SELECT m.user_uuid, m.app_user_id, m.img_uuid, m.display_name, m.email, m.role_type, m.isactive, m.created_dtm
+	SELECT m.user_uuid, m.app_user_id, m.img_uuid, m.file_name, m.display_name, m.email, m.role_type, m.isactive, m.created_dtm
 	FROM main_v m
 	WHERE ';
 

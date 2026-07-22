@@ -1,3 +1,4 @@
-insert into game_file (game_profile_id, file_uuid, file_name, file_version, file_size, isbrowser, status_type_id) values (1 ,'019f5333-fa46-70f4-be95-70bfae1ddd0d', 'IceCave1.1.zip', 'v1.6.9', '34MB', false, 4);
-insert into game_file (game_profile_id, file_uuid, file_name, file_version, file_size, isbrowser, status_type_id) values (2 ,'019f5303-7391-705b-b842-2a7a3e607b01', 'index.audio.worklet.zip', '1.0.0', '10KB', true, 4);
-insert into game_file (game_profile_id, file_uuid, file_name, file_version, file_size, isbrowser, status_type_id) values (3 ,'019f536b-d723-7d80-9181-89cfefc39f67', 'mountainMechanicV1.2.zip', 'v1.0.1', '77MB', false, 4);
+insert into game_file (game_profile_id, file_uuid, file_name, file_size, platform_id, status_type_id) values (1 ,'019f58df-9cee-7a48-9ffd-37f57e23fde8', 'IceCave1.1.zip', '34MB', 2, 4);
+insert into game_file (game_profile_id, file_uuid, file_name, file_size, platform_id, status_type_id) values (2 ,'019f58ee-fd8e-778c-9d31-f3c9a2febf82', 'index.audio.worklet.zip', '10MB', 1, 4);
+insert into game_file (game_profile_id, file_uuid, file_name, file_size, platform_id, status_type_id) values (3 ,'019f5900-6315-7879-99f7-6f64037ba886', 'mountainMechanicV1.2.zip', '77MB', 2, 4);
+insert into game_file (game_profile_id, file_uuid, file_name, file_size, platform_id, status_type_id) values (4 ,'019f5e89-dc89-7809-8994-5b53415d1915', 'Planet Game Tech Demo0.1 - Web.zip', '18MB', 1, 4);

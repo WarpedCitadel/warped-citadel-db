@@ -25,6 +25,7 @@
 	<include file="/functions/fnc_table_row_audit_trg.sql"        relativeToChangelogFile="true"/>
 	<include file="/functions/fnc_table_row_uuid_trg.sql"        relativeToChangelogFile="true"/>
 	<include file="/functions/fnt_game_profile.sql"        relativeToChangelogFile="true"/>
+	<include file="/functions/fnc_table_row_profile_image_trg.sql"        relativeToChangelogFile="true"/>
 	<!-- Tables -->
 	<include file="/tables/role.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user.sql"        relativeToChangelogFile="true"/>
@@ -32,6 +33,7 @@
 	<include file="/tables/app_user_audit.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/app_user_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/profile_image.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/profile_image_staging.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_genre.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_type.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/platform.sql"        relativeToChangelogFile="true"/>
@@ -39,11 +41,12 @@
 	<include file="/tables/game_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_platform.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_image.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/game_image_staging.sql"        relativeToChangelogFile="true"/>
 	<include file="/tables/game_file.sql"        relativeToChangelogFile="true"/>
+	<include file="/tables/game_file_staging.sql"        relativeToChangelogFile="true"/>
 	<!-- Reference Data -->
 	<include file="/reference/app_user.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/app_user_profile.sql"        relativeToChangelogFile="true"/>
-	<include file="/reference/profile_image.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_profile.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_platform.sql"        relativeToChangelogFile="true"/>
 	<include file="/reference/game_image.sql"        relativeToChangelogFile="true"/>
