@@ -43,14 +43,14 @@ BEGIN
 		UNION ALL
 		SELECT
 			gp.app_user_id::BIGINT,
-			gfs.file_uuid::UUID,
 			gp.game_profile_uuid::UUID,
+			gfs.file_uuid::UUID,
 			gp.title::TEXT,
 			gfs.file_name::TEXT,
 			gfs.file_size::TEXT,
 			gfs.platform_id::SMALLINT,
 			gfs.status_type_id::SMALLINT,
-			gfs.created_dtm::TIMESTAMP 
+			gfs.created_dtm::TIMESTAMP
 		FROM wc01.game_file_staging gfs
 		INNER JOIN wc01.game_profile gp
 			ON gfs.game_profile_id = gp.id

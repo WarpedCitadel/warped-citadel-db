@@ -4,7 +4,7 @@
 CREATE TABLE status_type (
   id 				SERIAL 		NOT NULL PRIMARY KEY,
   status_type_name 	TEXT 		NOT NULL,
-  CONSTRAINT cap_id CHECK (id <= 5)
+  CONSTRAINT cap_id CHECK (id <= 6)
 );
 
 COMMENT ON TABLE status_type IS 'static values for a app_file object vetting and approval status';
@@ -14,10 +14,11 @@ COMMENT ON TABLE status_type IS 'static values for a app_file object vetting and
 -- create status types
 INSERT INTO status_type (id, status_type_name) 
 VALUES 	(1, 'new'),
-		(2, 'analyzing'),
+		(2, 'proccessing'),
 		(3, 'review'),
-		(4, 'active'),
-		(5, 'deleted');
+		(4, 'ready'),
+		(5, 'deployed'),
+		(6, 'deleted');
 
 
 -- permissions

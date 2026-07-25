@@ -51,7 +51,7 @@ LEFT JOIN (
 	) os ON gp.id = os.game_profile_id
 INNER JOIN wc01.game_file gf
 	ON gf.game_profile_id = gp.id
-	AND gf.status_type_id = 4
+	AND gf.status_type_id = 5
 LEFT JOIN wc01.game_image gi
 	ON gi.game_profile_id = gp.id
 	AND gi.iscover = true
