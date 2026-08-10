@@ -18,7 +18,7 @@ COMMENT ON TABLE game_file IS 'Object metadata for game file uploads for the pla
 
 
 --changeset jnolte:20260520_create_game_file_uk01 runInTransaction:false
-CREATE UNIQUE INDEX CONCURRENTLY game_file_uk01 ON game_file(file_uuid);
+--CREATE UNIQUE INDEX CONCURRENTLY game_file_uk01 ON game_file(file_uuid);
 
 
 -- sequence
