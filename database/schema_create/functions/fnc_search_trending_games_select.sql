@@ -5,7 +5,7 @@
 CREATE OR REPLACE FUNCTION fnc_search_trending_games_select(
 	p_title 		TEXT 	DEFAULT NULL,
 	p_game_genre_id	INTEGER DEFAULT	NULL,
-	p_platform_os	TEXT[]	DEFAULT NULL,
+	p_platform_os	INTEGER[]	DEFAULT NULL,
 	p_most_recent	INTEGER	DEFAULT NULL,
 	p_game_type		INTEGER	DEFAULT	NULL
 )
@@ -16,7 +16,7 @@ RETURNS TABLE(
 	title					TEXT,
 	short_desc				TEXT,
 	game_genre_id			INTEGER,
-	platform_os				TEXT[],
+	platform_os				INTEGER[],
 	game_type_id			INTEGER,
 	created_dtm				TIMESTAMP
 ) AS $func$
@@ -35,14 +35,14 @@ SELECT
 	gp.title::TEXT,
 	gp.short_desc::TEXT,
 	gp.game_genre_id::INTEGER,
-	os.platform_os::TEXT[],
+	os.platform_os::INTEGER[],
 	gp.game_type_id::INTEGER,
 	gp.created_dtm::TIMESTAMP
 	from wc01.game_profile gp
 LEFT JOIN (
 	SELECT
 		gpm.game_profile_id,
-		ARRAY_AGG(p.platform_type) as platform_os
+		ARRAY_AGG(p.id) as platform_os
 	FROM wc01.game_platform gpm
 	INNER JOIN wc01.platform p
 		ON gpm.platform_id = p.id
@@ -112,7 +112,7 @@ END;
 $func$ LANGUAGE plpgsql;
 
 
-COMMENT ON FUNCTION fnc_search_trending_games_select(TEXT, INTEGER, TEXT[], INTEGER, INTEGER) IS '
+COMMENT ON FUNCTION fnc_search_trending_games_select(TEXT, INTEGER, INTEGER[], INTEGER, INTEGER) IS '
 fetches game profiles for applications main page.
 
 The function provides dynamically searched by sorting based on title searches, genre types, most recent, and OS compatibility.
